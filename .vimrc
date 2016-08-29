@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'        " file explorer
 Plug 'ctrlpvim/ctrlp.vim'         " fuzzy finder
 Plug 'Valloric/YouCompleteMe'     " autocompletion
+Plug 'mileszs/ack.vim'            " regex search
 
 call plug#end()
 
@@ -45,8 +46,9 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 if executable('ag')
-  " Use Ag over Grep
+  " Use Ag over Grep and Ack
   set grepprg=ag\ --nogroup\ --nocolor
+  let g:ackprg = 'ag --vimgrep'
 
   " Use ag in CtrlP
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
