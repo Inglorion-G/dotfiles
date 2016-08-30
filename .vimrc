@@ -8,6 +8,13 @@ set backupdir=~/.vim_temp
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 " ----- Plugins -----
 call plug#begin('~/.vim/plugged')
 
