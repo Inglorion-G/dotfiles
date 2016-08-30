@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree'        " file explorer
 Plug 'ctrlpvim/ctrlp.vim'         " fuzzy finder
 Plug 'Valloric/YouCompleteMe'     " autocompletion
 Plug 'mileszs/ack.vim'            " regex search
+Plug 'tpope/vim-commentary'       " comments
 
 call plug#end()
 

@@ -54,6 +54,7 @@ fi
 
 brew update
 
+# install vim
 brew install macvim --with-override-system-vim
 
 echo "Making vim backup/swap directory..."
