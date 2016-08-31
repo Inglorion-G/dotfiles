@@ -33,6 +33,7 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set number              " show line numbers
 set rnu                 " show relative line numbers
+set smartcase           " better searching
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -100,10 +101,15 @@ else
 
 endif " has("autocmd")
 
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+
 " ----- Macros -----
 let mapleader = "\<Space>"
 
 nmap <leader>ne :NERDTreeToggle<cr>
+nmap <leader>tw :call TrimWhiteSpace()<cr>
 
 " mappings -----
 
