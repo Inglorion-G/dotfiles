@@ -54,6 +54,9 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" add jbuilder syntax highlighting
+au BufNewFile,BufRead *.jbuilder set ft=ruby
+
 if executable('ag')
   " Use Ag over Grep and Ack
   set grepprg=ag\ --nogroup\ --nocolor
@@ -83,6 +86,9 @@ if has("autocmd")
   autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
   autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
+  " automatically rebalance windows on vim resize
+  autocmd VimResized * :wincmd =
+
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
@@ -110,6 +116,10 @@ let mapleader = "\<Space>"
 
 nmap <leader>ne :NERDTreeToggle<cr>
 nmap <leader>tw :call TrimWhiteSpace()<cr>
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
 
 " mappings -----
 

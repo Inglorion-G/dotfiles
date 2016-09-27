@@ -28,4 +28,3 @@ export PATH="/usr/local/bin:$PATH:/usr/local/m-cli"
 # work config
 eval "$(rbenv init -)"
 export CH_USER="george"
-#export CH_HIPCHAT_SECRET="{get from another developer}"
