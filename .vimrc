@@ -23,6 +23,7 @@ Plug 'ctrlpvim/ctrlp.vim'         " fuzzy finder
 Plug 'Valloric/YouCompleteMe'     " autocompletion
 Plug 'mileszs/ack.vim'            " regex search
 Plug 'tpope/vim-commentary'       " comments
+Plug 'christoomey/vim-tmux-navigator'   " easy navigation
 
 call plug#end()
 
