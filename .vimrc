@@ -24,7 +24,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Valloric/YouCompleteMe'           " autocompletion
 Plug 'mileszs/ack.vim'                  " regex search
 Plug 'tpope/vim-commentary'             " comments
-Plug 'tpop/vim-fugitive'                " git wrapper
+Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'christoomey/vim-tmux-navigator'   " easy navigation
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
