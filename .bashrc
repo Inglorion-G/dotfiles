@@ -3,6 +3,9 @@ alias ll="ls -al"
 alias subl='open -a "Sublime Text 2"'
 alias railsc="bin/rails c"
 alias railss="bin/rails s"
+alias be="bundle exec"
+alias ber="bundle exec rake"
+alias bert="bundle exec rake test"
 
 # bash completion
 if [ -f $HOME/.git-completion.bash ]; then
