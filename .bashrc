@@ -28,6 +28,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # path
 export PATH="/usr/local/bin:$PATH:/usr/local/m-cli"
 
+# coverhound admin
+export CH_USER="george@coverhound.com"
+
 # work config
 eval "$(rbenv init -)"
-export CH_USER="george"
