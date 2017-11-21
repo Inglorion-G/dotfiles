@@ -19,13 +19,16 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'              " file explorer
-" Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe'           " autocompletion
 Plug 'mileszs/ack.vim'                  " regex search
 Plug 'tpope/vim-commentary'             " comments
 Plug 'tpope/vim-fugitive'               " git wrapper
+Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'   " easy navigation
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } "js syntax
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
 
@@ -79,6 +82,10 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
+
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
@@ -88,10 +95,11 @@ if has("autocmd")
 
   " filetype styles
   autocmd Filetype html setlocal ts=2 sw=2 expandtab
+  autocmd Filetype erb setlocal ts=2 sw=2 expandtab
   autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
   autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
   autocmd Filetype json setlocal ts=2 sw=2 expandtab
-  autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
+  " autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 
   " automatically rebalance windows on vim resize
   autocmd VimResized * :wincmd =
@@ -139,8 +147,8 @@ nmap <leader>tl :tabp<cr>
 noremap <silent><leader>yp :let @+=expand("%")<CR>
 noremap <silent><leader>yfp :let @+=expand("%:p")<CR>
 
-map <C-p> :FZF<cr>
-nmap <C-p> :FZF<cr>
+nmap <C-p> :Files<cr>
+nmap <C-o> :Buffers<cr>
 
 " zoom a vim pane, <C-w>= to re-balance
 " nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>

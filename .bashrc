@@ -1,7 +1,7 @@
 # aliases
 alias ll="ls -al"
 alias subl='open -a "Sublime Text 2"'
-alias railsc="bin/rails c"
+alias railsc="bin/spring stop && bin/rails console"
 alias railss="bin/rails s"
 alias be="bundle exec"
 alias ber="bundle exec rake"
@@ -33,3 +33,4 @@ export CH_USER="george@coverhound.com"
 
 # work config
 eval "$(rbenv init -)"
+eval "$(nodenv init -)"
