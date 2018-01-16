@@ -19,18 +19,20 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'              " file explorer
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
+Plug 'junegunn/fzf.vim'                 " fuzzy finder
 Plug 'Valloric/YouCompleteMe'           " autocompletion
 Plug 'mileszs/ack.vim'                  " regex search
 Plug 'tpope/vim-commentary'             " comments
 Plug 'tpope/vim-fugitive'               " git wrapper
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'               " parens, brackets, etc
 Plug 'christoomey/vim-tmux-navigator'   " easy navigation
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } "js syntax
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } "js syntax
+Plug 'sheerun/vim-polyglot'             " language pack
+
 
 call plug#end()
 
