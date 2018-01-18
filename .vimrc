@@ -165,6 +165,8 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+set re=1
+
 " ----- Utility -----
 "
 " Convenient command to see the difference between the current buffer and the
