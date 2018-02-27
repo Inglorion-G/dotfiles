@@ -27,11 +27,9 @@ Plug 'tpope/vim-commentary'             " comments
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-surround'               " parens, brackets, etc
 Plug 'christoomey/vim-tmux-navigator'   " easy navigation
-Plug 'pangloss/vim-javascript' " { 'for': ['javascript', 'javascript.jsx'] } js syntax
-Plug 'mxw/vim-jsx' ", { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'sheerun/vim-polyglot'
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
-Plug 'sheerun/vim-polyglot'             " language pack
 
 
 call plug#end()
