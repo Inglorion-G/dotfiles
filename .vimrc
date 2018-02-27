@@ -27,66 +27,88 @@ Plug 'tpope/vim-commentary'             " comments
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-surround'               " parens, brackets, etc
 Plug 'christoomey/vim-tmux-navigator'   " easy navigation
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript' " { 'for': ['javascript', 'javascript.jsx'] } js syntax
+Plug 'mxw/vim-jsx' ", { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } "js syntax
 Plug 'sheerun/vim-polyglot'             " language pack
 
 
 call plug#end()
 
-" ----- Options -----
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set number              " show line numbers
-set rnu                 " show relative line numbers
-set smartcase           " better searching
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  colorscheme SpacegrayEighties
-  set hlsearch
-endif
+" ----- Color Scheme and Syntax -----
+syntax on
+colorscheme SpacegrayEighties
+set hlsearch
 
 " add jbuilder syntax highlighting
 au BufNewFile,BufRead *.jbuilder set ft=ruby
 
-if executable('ag')
-  " Use Ag over Grep and Ack
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ackprg = 'ag --vimgrep'
+" ----- Options -----
+set history=50		" keep 50 lines of command line history
+set ruler		      " show the cursor position all the time
+set showcmd	    	" display incomplete commands
+set incsearch	  	" do incremental searching
+set number        " show line numbers
+set rnu           " show relative line numbers
+set smartcase     " better searching
+set re=1          " use regex engine 1
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
-  " Use ag in CtrlP
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" ----- Mappings -----
+let mapleader = "\<Space>"
+
+nmap <leader>ne :NERDTreeToggle<cr>
+nmap <leader>nf :NERDTreeFind<cr>
+nmap <leader>tw :call TrimWhiteSpace()<cr>
+
+" 'zoom' a window - opens new tab with current buffer
+nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>zz :wincmd =<cr>
+
+" copy to system clipboard
+nmap <leader>cp :%w !pbcopy<cr>
+" yank current path to clipboard
+noremap <silent><leader>yp :let @+=expand("%")<CR>
+noremap <silent><leader>yfp :let @+=expand("%:p")<CR>
+
+" easier working with tabs
+nmap <leader>tt :tabnew<cr>
+nmap <leader>tn :tabn<cr>
+nmap <leader>tl :tabp<cr>
+
+" fuzzy finding
+nmap <C-p> :Files<cr>
+nmap <C-o> :Buffers<cr>
+
+" use 'jj' to exit insert mode
+inoremap jj <Esc>:w<CR>
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+if has('mouse')
+  set mouse=a
+endif
+
+if has("vms")
+  set nobackup " do not keep a backup file, use versions instead
+else
+  set backup	 " keep a backup file
+endif
+
+if executable('rg')
+  " Use Ag over Grep and Ack
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  set tabstop=2
-  set shiftwidth=2
-  set expandtab
+  filetype plugin indent on " file type detection, auto language-dependent indenting
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -124,48 +146,14 @@ else
 
 endif " has("autocmd")
 
+" ----- Functions -----
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" ----- Macros -----
-let mapleader = "\<Space>"
-
-nmap <leader>ne :NERDTreeToggle<cr>
-nmap <leader>tw :call TrimWhiteSpace()<cr>
-
-" 'zoom' a window - opens new tab with current buffer
-nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>zz :wincmd =<cr>
-
-" copy to system clipboard
-nmap <leader>cp :%w !pbcopy<cr>
-
-" easier working with tabs
-nmap <leader>tt :tabnew<cr>
-nmap <leader>tn :tabn<cr>
-nmap <leader>tl :tabp<cr>
-
-noremap <silent><leader>yp :let @+=expand("%")<CR>
-noremap <silent><leader>yfp :let @+=expand("%:p")<CR>
-
-nmap <C-p> :Files<cr>
-nmap <C-o> :Buffers<cr>
-
-" zoom a vim pane, <C-w>= to re-balance
-" nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-" nnoremap <leader>= :wincmd =<cr>
-
-" mappings -----
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-set re=1
+" inoremap <C-U> <C-G>u<C-U>
 
 " ----- Utility -----
 "
@@ -176,10 +164,3 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
-
-" ctrlp settings
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|node_modules\|public\/images\|public\/system\|data\|log\|tmp$',
-  \ 'file': '\.exe$\|\.so$\|\.dat$'
-  \ }
