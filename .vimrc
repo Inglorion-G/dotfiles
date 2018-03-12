@@ -30,14 +30,19 @@ Plug 'christoomey/vim-tmux-navigator'   " easy navigation
 Plug 'sheerun/vim-polyglot'
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
+Plug 'mhartington/oceanic-next'         " color scheme
+Plug 'vim-airline/vim-airline'
 
 
 call plug#end()
 
 " ----- Color Scheme and Syntax -----
-syntax on
-colorscheme SpacegrayEighties
+syntax enable
+colorscheme OceanicNext
 set hlsearch
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " add jbuilder syntax highlighting
 au BufNewFile,BufRead *.jbuilder set ft=ruby
@@ -58,9 +63,13 @@ set expandtab
 " ----- Mappings -----
 let mapleader = "\<Space>"
 
+" nerd tree
 nmap <leader>ne :NERDTreeToggle<cr>
 nmap <leader>nf :NERDTreeFind<cr>
+
+" utility
 nmap <leader>tw :call TrimWhiteSpace()<cr>
+nmap <leader>sv :source $MYVIMRC<cr>
 
 " 'zoom' a window - opens new tab with current buffer
 nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
@@ -86,6 +95,11 @@ inoremap jj <Esc>:w<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
+
+" Airline
+let g:airline_powerline_fonts=0
+let g:airline#extensions#ale#enabled = 1
+
 
 if has('mouse')
   set mouse=a
