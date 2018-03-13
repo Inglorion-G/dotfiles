@@ -1,1 +1,5 @@
-archive/
+# ignore working files for nvim
+/.config/nvim/autoload/
+
+# ignore archive
+/archive/
