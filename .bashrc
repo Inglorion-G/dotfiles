@@ -6,6 +6,7 @@ alias railss="bin/rails s"
 alias be="bundle exec"
 alias ber="bundle exec rake"
 alias bert="bundle exec rake test"
+alias vim="nvim"
 
 # bash completion
 if [ -f $HOME/.git-completion.bash ]; then
@@ -41,3 +42,6 @@ export CH_USER="george@coverhound.com"
 # work config
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
+
+# load fzf bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
