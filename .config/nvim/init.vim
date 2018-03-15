@@ -1,12 +1,6 @@
-" Use Vim settings, rather than Vi settings (much better!)
-set nocompatible
-
 " directories for backup files
 set dir=~/.vim_temp
 set backupdir=~/.vim_temp
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
 
 " install vim-plug if not already installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -27,40 +21,63 @@ Plug 'tpope/vim-commentary'             " comments
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-surround'               " parens, brackets, etc
 Plug 'christoomey/vim-tmux-navigator'   " easy navigation
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'             " language syntax support
 Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
 Plug 'mhartington/oceanic-next'         " color scheme
 Plug 'vim-airline/vim-airline'
 
-
 call plug#end()
-
-" ----- Color Scheme and Syntax -----
-syntax enable
-colorscheme OceanicNext
-set hlsearch
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 " add jbuilder syntax highlighting
 au BufNewFile,BufRead *.jbuilder set ft=ruby
 
-" ----- Options -----
-set history=50		" keep 50 lines of command line history
-set ruler		      " show the cursor position all the time
-set showcmd	    	" display incomplete commands
-set incsearch	  	" do incremental searching
-set number        " show line numbers
-set rnu           " show relative line numbers
-set smartcase     " better searching
-set re=1          " use regex engine 1
+" =================================================================================================
+" ----- Settings -----
+" =================================================================================================
+
+" core config
+set hlsearch                            " highlight search terms
+set clipboard=unnamed                   " clipboard support
+set history=500		                      " keep 50 lines of command line history
+set ruler		                            " show the cursor position all the time
+set mouse=a                             " mouse support
+set backspace=indent,eol,start          " backspace behavior
+set showcmd	    	                      " display incomplete commands
+set incsearch	  	                      " highlight while searching
+set number                              " show line numbers
+set rnu                                 " show relative line numbers
+set smartcase                           " better searching
+set re=1                                " use regex engine 1
+set ignorecase                          " case insensitive matching
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" backup / swap
+
+set backupskip=/tmp*,/private/tmp/*
+set directory=$HOME/.config/nvim/swap//
+
+" color scheme
+syntax enable
+set background=dark
+colorscheme OceanicNext
+
+if (has("&termguicolors"))
+  set termguicolors
+endif
+
+" nerd tree
+let NERDTreeShowHidden=1
+
+" Airline
+let g:airline_powerline_fonts=0
+let g:airline#extensions#ale#enabled = 1
+
+" =================================================================================================
 " ----- Mappings -----
+" =================================================================================================
 let mapleader = "\<Space>"
 
 " nerd tree
@@ -69,7 +86,7 @@ nmap <leader>nf :NERDTreeFind<cr>
 
 " utility
 nmap <leader>tw :call TrimWhiteSpace()<cr>
-nmap <leader>sv :source $MYVIMRC<cr>
+nmap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nmap <leader>hl :nohls<cr>
 
 " 'zoom' a window - opens new tab with current buffer
@@ -78,6 +95,7 @@ nnoremap <leader>zz :wincmd =<cr>
 
 " copy to system clipboard
 nmap <leader>cp :%w !pbcopy<cr>
+
 " yank current path to clipboard
 noremap <silent><leader>yp :let @+=expand("%")<CR>
 noremap <silent><leader>yfp :let @+=expand("%:p")<CR>
@@ -97,14 +115,6 @@ inoremap jj <Esc>:w<CR>
 " disable Ex mode
 noremap Q <nop>
 
-" Airline
-let g:airline_powerline_fonts=0
-let g:airline#extensions#ale#enabled = 1
-
-if has('mouse')
-  set mouse=a
-endif
-
 if has("vms")
   set nobackup " do not keep a backup file, use versions instead
 else
@@ -112,7 +122,7 @@ else
 endif
 
 if executable('rg')
-  " Use Ag over Grep and Ack
+  " Use RipGrep over Grep and Ack
   set grepprg=rg\ --vimgrep\ --no-heading
   set grepformat=%f:%l:%c:%m,%f:%l:%m
   let g:ackprg = 'rg --vimgrep --no-heading'
@@ -163,9 +173,11 @@ function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-" inoremap <C-U> <C-G>u<C-U>
+function! ConvertToUnix()
+  :e ++ff=dos<cr>
+  :set ff=unix<cr>
+  :w
+endfunction
 
 " ----- Utility -----
 "
