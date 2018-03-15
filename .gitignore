@@ -1,5 +1,7 @@
 # ignore working files for nvim
 /.config/nvim/autoload/
+/.config/nvim/swap/*
+/.config/nvim/backup/*
 
 # ignore archive
 /archive/
