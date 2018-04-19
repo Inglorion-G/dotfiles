@@ -40,9 +40,6 @@ call plug#end()
 syntax enable
 colorscheme OceanicNext
 set hlsearch
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 " add jbuilder syntax highlighting
 au BufNewFile,BufRead *.jbuilder set ft=ruby

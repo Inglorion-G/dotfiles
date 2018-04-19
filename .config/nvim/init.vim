@@ -1,7 +1,3 @@
-" directories for backup files
-set dir=~/.vim_temp
-set backupdir=~/.vim_temp
-
 " install vim-plug if not already installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -9,7 +5,9 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
 endif
 
+" =================================================================================================
 " ----- Plugins -----
+" =================================================================================================
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'              " file explorer
@@ -55,9 +53,9 @@ set shiftwidth=2
 set expandtab
 
 " backup / swap
-
 set backupskip=/tmp*,/private/tmp/*
-set directory=$HOME/.config/nvim/swap//
+set directory=$HOME/.config/nvim/swap/
+set backupdir=$HOME/.config/nvim/backup/
 
 " color scheme
 syntax enable
@@ -74,6 +72,10 @@ let NERDTreeShowHidden=1
 " Airline
 let g:airline_powerline_fonts=0
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme='oceanicnext'
+
+" fzf
+let g:fzf_buffers_jump = 1
 
 " =================================================================================================
 " ----- Mappings -----

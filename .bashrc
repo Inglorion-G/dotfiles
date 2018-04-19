@@ -39,6 +39,10 @@ export PATH="/usr/local/bin:$PATH:/usr/local/m-cli"
 # coverhound admin
 export CH_USER="george@coverhound.com"
 
+# editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # work config
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
