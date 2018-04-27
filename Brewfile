@@ -1,41 +1,69 @@
-tap "heroku/brew"
-tap "homebrew/core"
-tap "homebrew/versions"
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "caskroom/versions"
-tap "caskroom/cask"
-cask "caskroom/versions/java8"
-brew "ack"
-brew "autoconf"
-brew "bcrypt"
-brew "cmake"
-brew "cscope"
-brew "elasticsearch"
-brew "elasticsearch@5.6", restart_service: true
-brew "libpng"
-brew "freetype"
-brew "git"
-brew "git-crypt"
-brew "jpeg"
-brew "libtiff"
-brew "xz"
-brew "imagemagick"
-brew "macvim", args: ["with-override-system-vim"]
-brew "mysql"
-brew "nodenv"
-brew "pcre"
-brew "phantomjs"
-brew "postgresql"
-brew "qt", link: true
-brew "ruby-build"
-brew "rbenv"
-brew "reattach-to-user-namespace"
-brew "redis", restart_service: true
-brew "ripgrep"
-brew "the_silver_searcher"
-brew "tig"
-brew "tmux", args: ["HEAD"]
-brew "tree"
-brew "yarn"
-brew "heroku/brew/heroku"
+cask_args appdir: '/Applications'
+
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+
+# ===============================================
+# Development
+# ===============================================
+
+# *Nix Tools
+
+brew 'coreutils'
+brew 'autoconf'
+brew 'automake'
+brew 'cmake'
+brew 'cscope'
+brew 'libpng'
+brew 'freetype'
+brew 'jpeg'
+brew 'libtiff'
+brew 'xz'
+brew 'imagemagick'
+brew 'pcre'
+brew 'qt', link: true
+brew 'wget'
+
+brew 'bcrypt'
+brew 'ack'
+brew 'git'
+brew 'git-crypt'
+brew 'tig'
+brew 'neovim'
+brew 'the_silver_searcher'
+brew 'ripgrep'
+brew 'tmux', args: ['HEAD']
+brew 'fzf'
+brew 'tree'
+brew 'reattach-to-user-namespace'
+
+# Deployment / Management Tools
+
+brew 'rbenv'
+brew 'nodenv'
+brew 'yarn'
+brew 'heroku/brew/heroku'
+
+# Databases
+
+brew 'redis', restart_service: true
+brew 'mysql', restart_service: true
+brew 'postgresql', restart_service: true
+brew 'elasticsearch', restart_service: true
+
+# ===============================================
+# Applications
+# ===============================================
+
+cask '1password'
+cask 'iterm2'
+cask 'vlc'
+cask 'slack'
+cask 'alfred'
+cask 'sequel-pro'
+cask 'postman'
+cask 'dash'
+cask 'firefox'
+cask 'google-chrome'
+cask 'google-drive'
+cask 'atom'
