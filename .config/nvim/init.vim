@@ -24,6 +24,7 @@ Plug 'skalnik/vim-vroom'                " run tests
 Plug 'w0rp/ale'                         " linter
 Plug 'mhartington/oceanic-next'         " color scheme
 Plug 'vim-airline/vim-airline'
+Plug 'jiangmiao/auto-pairs'             " auto closing delimiters
 
 call plug#end()
 
