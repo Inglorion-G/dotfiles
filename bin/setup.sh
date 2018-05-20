@@ -19,6 +19,9 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 echo "\n Installing homebrew dependencies"
 brew bundle
 
+echo "\n Symlinking dotfiles"
+sh ./bin/link.sh
+
 echo "\n Installing git-aware-prompt"
 cd ~/.bash && git clone git://github.com/jimeh/git-aware-prompt.git
 cd ~/dotfiles
@@ -33,7 +36,3 @@ eval "$(nodenv init -)" 2> /dev/null
 nodenv install $NODE_VERSION
 nodenv global $NODE_VERSION
 yarn global add eslint
-
-echo "\n Symlinking dotfiles"
-sh ./bin/link.sh
-
