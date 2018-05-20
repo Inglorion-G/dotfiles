@@ -3,5 +3,14 @@
 /.config/nvim/swap/*
 /.config/nvim/backup/*
 
+# ignore working files for vanilla vim
+/home/.vim_temp/*
+
+# ignore files for git aware prompt
+/home/.bash/*
+
 # ignore archive
 /archive/
+
+# other ignores
+.DS_Store

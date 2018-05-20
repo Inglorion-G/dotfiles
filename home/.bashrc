@@ -43,7 +43,7 @@ export CH_USER="george@coverhound.com"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# work config
+# initialize ruby and node version managers
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
