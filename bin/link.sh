@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR=`dirname $(cd $(dirname $0) && pwd -P)`
-TARGET_DIR="$HOME/test_link"
+TARGET_DIR="$HOME"
 
 # symlink top-level dotfiles to $HOME
 DOTFILES=$DIR/home/.[a-z]*
