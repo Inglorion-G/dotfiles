@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
+tap 'heroku/brew'
 
 # ===============================================
 # Development
@@ -49,6 +50,7 @@ brew 'heroku/brew/heroku'
 brew 'redis', restart_service: true
 brew 'mysql', restart_service: true
 brew 'postgresql', restart_service: true
+cask "caskroom/versions/java8"
 brew 'elasticsearch', restart_service: true
 
 # ===============================================
@@ -65,5 +67,4 @@ cask 'postman'
 cask 'dash'
 cask 'firefox'
 cask 'google-chrome'
-cask 'google-drive'
 cask 'atom'
