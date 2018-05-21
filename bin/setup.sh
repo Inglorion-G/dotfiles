@@ -4,8 +4,8 @@
 # Install script for George's dependencies and dotfiles
 # =====================================================  
 
-RUBY_VERSION="2.5.0"
-NODE_VERSION="8.11.2"
+RUBY_VERSION="2.4.0"
+NODE_VERSION="8.11.1"
 
 cd ~/dotfiles
 
