@@ -14,3 +14,6 @@
 
 # other ignores
 .DS_Store
+
+# keep these files
+!.keep
