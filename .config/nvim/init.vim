@@ -91,6 +91,7 @@ nmap <leader>nf :NERDTreeFind<cr>
 nmap <leader>tw :call TrimWhiteSpace()<cr>
 nmap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nmap <leader>hl :nohls<cr>
+nmap <leader>alet :ALEToggle<cr>
 
 " 'zoom' a window - opens new tab with current buffer
 nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
