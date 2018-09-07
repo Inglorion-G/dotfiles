@@ -47,24 +47,24 @@ brew 'heroku/brew/heroku'
 
 # Databases
 
-brew 'redis', restart_service: true
-brew 'mysql', restart_service: true
-brew 'postgresql', restart_service: true
-cask "caskroom/versions/java8"
-brew 'elasticsearch', restart_service: true
+# brew 'redis', restart_service: true
+# brew 'mysql', restart_service: true
+# brew 'postgresql', restart_service: true
+# cask "caskroom/versions/java8"
+# brew 'elasticsearch', restart_service: true
 
 # ===============================================
 # Applications
 # ===============================================
 
-cask '1password'
+# cask '1password'
 cask 'iterm2'
-cask 'vlc'
+# cask 'vlc'
 cask 'slack'
 cask 'alfred'
 cask 'sequel-pro'
 cask 'postman'
 cask 'dash'
 cask 'firefox'
-cask 'google-chrome'
+# cask 'google-chrome'
 cask 'atom'
