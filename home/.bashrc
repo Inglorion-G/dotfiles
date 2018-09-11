@@ -11,8 +11,9 @@ alias vim="nvim"
 # one medical aliases
 alias qualconsole="beans exec rails console --interactive -a $QUAL_SERVER_NAME -i ~/.ssh/1life-core.pem"
 alias qualdeploy="beans deploy -a $QUAL_SERVER_NAME"
-alias aonelife="docker attach $(docker ps | grep 'onelife-base' | awk '{print $1;}')"
-alias aonelifeui="docker attach $(docker ps | grep 'onelife-ui' | awk '{print $1;}')"
+alias docker_attach_onelife="docker attach $(docker ps | grep 'onelife-base' | awk '{print $1;}')"
+alias docker_attach_onelifeui="docker attach $(docker ps | grep 'onelife-ui' | awk '{print $1;}')"
+alias docker_update_node_modules="docker-compose run onelife-ui npm prune && npm i"
 
 # bash completion
 if [ -f $HOME/.git-completion.bash ]; then
