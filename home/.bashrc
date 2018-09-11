@@ -8,6 +8,12 @@ alias ber="bundle exec rake"
 alias bert="bundle exec rake test"
 alias vim="nvim"
 
+# one medical aliases
+alias qualconsole="beans exec rails console --interactive -a $QUAL_SERVER_NAME -i ~/.ssh/1life-core.pem"
+alias qualdeploy="beans deploy -a $QUAL_SERVER_NAME"
+alias aonelife="docker attach $(docker ps | grep 'onelife-base' | awk '{print $1;}')"
+alias aonelifeui="docker attach $(docker ps | grep 'onelife-ui' | awk '{print $1;}')"
+
 # bash completion
 if [ -f $HOME/.git-completion.bash ]; then
   . $HOME/.git-completion.bash
@@ -19,6 +25,9 @@ fi
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# one medical vars
+export QUAL_SERVER_NAME="onelife-paris"
 
 # loading for git branch in prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
@@ -35,9 +44,6 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # path
 export PATH="/usr/local/bin:$PATH:/usr/local/m-cli"
-
-# coverhound admin
-export CH_USER="george@coverhound.com"
 
 # editor
 export VISUAL=vim
