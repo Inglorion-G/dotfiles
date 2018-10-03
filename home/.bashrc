@@ -7,10 +7,12 @@ alias be="bundle exec"
 alias ber="bundle exec rake"
 alias bert="bundle exec rake test"
 alias vim="nvim"
+alias vscode="open . -a 'Visual Studio Code'"
 
 # one medical aliases
 alias qualconsole="beans exec rails console --interactive -a $QUAL_SERVER_NAME -i ~/.ssh/1life-core.pem"
 alias qualdeploy="beans deploy -a $QUAL_SERVER_NAME"
+alias qualmigrate="beans exec rake db:migrate -a $QUAL_SERVER_NAME"
 alias docker_attach_onelife="docker attach $(docker ps | grep 'onelife-base' | awk '{print $1;}')"
 alias docker_attach_onelifeui="docker attach $(docker ps | grep 'onelife-ui' | awk '{print $1;}')"
 alias docker_update_node_modules="docker-compose run onelife-ui npm prune && npm i"
