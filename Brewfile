@@ -57,7 +57,7 @@ brew 'elasticsearch', restart_service: true
 # Applications
 # ===============================================
 
-cask '1password'
+# cask '1password'
 cask 'iterm2'
 cask 'vlc'
 cask 'slack'
@@ -66,5 +66,4 @@ cask 'sequel-pro'
 cask 'postman'
 cask 'dash'
 cask 'firefox'
-cask 'google-chrome'
-cask 'atom'
+# cask 'google-chrome'

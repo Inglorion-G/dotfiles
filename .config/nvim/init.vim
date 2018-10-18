@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'              " file explorer
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
 Plug 'junegunn/fzf.vim'                 " fuzzy finder
-Plug 'Valloric/YouCompleteMe'           " autocompletion
+Plug 'Shougo/deoplete.nvim'             " autocompletion
 Plug 'mileszs/ack.vim'                  " regex search
 Plug 'tpope/vim-commentary'             " comments
 Plug 'tpope/vim-fugitive'               " git wrapper
@@ -78,6 +78,9 @@ let g:airline_theme='oceanicnext'
 " fzf
 let g:fzf_buffers_jump = 1
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 " =================================================================================================
 " ----- Mappings -----
 " =================================================================================================
@@ -118,6 +121,9 @@ inoremap jj <Esc>:w<CR>
 
 " disable Ex mode
 noremap Q <nop>
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 if has("vms")
   set nobackup " do not keep a backup file, use versions instead
