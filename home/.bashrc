@@ -1,4 +1,5 @@
 # aliases
+alias sbrc="source ~/.bashrc"
 alias ll="ls -al"
 alias subl='open -a "Sublime Text 2"'
 alias railsc="bin/spring stop && bin/rails console"
@@ -7,6 +8,7 @@ alias be="bundle exec"
 alias ber="bundle exec rake"
 alias bert="bundle exec rake test"
 alias vim="nvim"
+alias vscode="open . -a 'Visual Studio Code'"
 
 # bash completion
 if [ -f $HOME/.git-completion.bash ]; then
