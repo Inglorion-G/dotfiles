@@ -52,6 +52,7 @@ set ignorecase                          " case insensitive matching
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set nolazyredraw
 
 " backup / swap
 set backupskip=/tmp*,/private/tmp/*
