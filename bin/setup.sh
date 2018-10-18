@@ -10,7 +10,7 @@ NODE_VERSION="8.11.1"
 cd ~/dotfiles
 
 echo "\n Installing dev tools"
-xcode-select --install
+# xcode-select --install
 
 echo "\n Installing Homebrew"
 sudo chown -R $USER /usr/local
