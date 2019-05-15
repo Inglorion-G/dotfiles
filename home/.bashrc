@@ -19,6 +19,7 @@ alias dc_bash="docker-compose run onelife bash"
 alias docker_attach_onelife="docker attach $(docker ps | grep 'onelife-base' | awk '{print $1;}')"
 alias docker_attach_onelifeui="docker attach $(docker ps | grep 'onelife-ui' | awk '{print $1;}')"
 alias docker_update_node_modules="docker-compose run onelife-ui npm prune && npm i"
+alias docker_authenticate="eval '$( aws ecr get-login --region us-east-1 --no-include-email )'"
 
 # bash completion
 if [ -f $HOME/.git-completion.bash ]; then
